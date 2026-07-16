@@ -138,12 +138,16 @@ CLAUDE {
 ```
 
 `codex exec` reads `OTEL_RESOURCE_ATTRIBUTES` but not `TRACEPARENT`; it also needs `CODEX_HOME`
-pointing at the repository's `.codex/`:
+pointing at the repository's `.codex/`, and on Windows it launches through `cmd /c` (a
+`codex.cmd` shim is invisible to Java's `CreateProcess`):
 
 ```java
 CODEX {
     @Override
     List<String> argv(String prompt) {
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            return List.of("cmd", "/c", "codex", "exec", prompt);
+        }
         return List.of("codex", "exec", prompt);
     }
 
