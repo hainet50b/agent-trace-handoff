@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: agent-trace-handoff-spring-boot
+  main:
+    banner-mode: "off"
+    log-startup-info: false
+
+handoff:
+  agent: claude
+  caller-name: ${spring.application.name}
+  prompt: "say hi in one word"
+
+management:
+  opentelemetry:
+    tracing:
+      export:
+        otlp:
+          endpoint: http://localhost:8200/v1/traces
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      type: W3C
+
+logging:
+  level:
+    root: WARN
+    com.programacho.agenttracehandoff: INFO
