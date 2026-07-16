@@ -14,6 +14,10 @@ flowchart LR
     apm --> es["Elasticsearch<br>:9200"] --> kibana["Kibana<br>:5601"]
 ```
 
+The result — the implementation's root span with the agent's spans beneath it, in one trace:
+
+![APM trace waterfall](docs/spring-boot/apm-trace-waterfall.png)
+
 ## Trace Handoff
 
 The implementation hands its trace context to the agent through the child process environment:
