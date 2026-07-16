@@ -49,9 +49,12 @@ claude exited with code 0 — its telemetry flushes on exit and joins trace.id=<
 
 ## Verify
 
-Kibana: <http://localhost:5601>. The APM trace view shows the implementation's root span with the
-agent's spans beneath it; Discover finds the agent's signals by the printed `trace.id` /
+Kibana APM: <http://localhost:5601/app/apm/services>. Open the `agent-trace-handoff-spring-boot`
+service and its latest transaction — the trace view shows the implementation's root span with the
+agent's spans beneath it. Discover finds the agent's signals by the printed `trace.id` /
 `labels.caller_name`.
+
+![APM trace waterfall](../docs/spring-boot/apm-trace-waterfall.png)
 
 The implementation's root span and the agent's spans under one trace:
 
