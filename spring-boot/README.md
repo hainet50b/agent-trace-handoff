@@ -35,7 +35,7 @@ git clone https://github.com/hainet50b/agent-trace-handoff.git
 cd agent-trace-handoff
 docker compose up -d
 cd spring-boot
-./mvnw spring-boot:run -Dspring-boot.run.arguments="--handoff.agent=claude"
+./mvnw spring-boot:run -D"spring-boot.run.arguments=--handoff.agent=claude"
 ```
 
 The run prints output like:
@@ -83,7 +83,7 @@ For `codex`, query `logs-apm.app.codex_*` instead.
 Override at launch:
 
 ```sh
-./mvnw spring-boot:run -Dspring-boot.run.arguments="--handoff.caller-name=checkout-svc --handoff.prompt=list the files here"
+./mvnw spring-boot:run -D"spring-boot.run.arguments=--handoff.caller-name=checkout-svc --handoff.prompt=list the files here"
 ```
 
 ## Implementation Guide
