@@ -34,7 +34,7 @@ public class AgentTraceHandoffRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Agent agent = Agent.from(properties.agent());
         List<String> argv = agent.argv(properties.prompt());
-        File agentWorkingDir = Path.of("..").toAbsolutePath().normalize().toFile();
+        File agentWorkingDir = Path.of("../..").toAbsolutePath().normalize().toFile();
 
         Span span = tracer.nextSpan().name("handoff").start();
 

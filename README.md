@@ -35,7 +35,7 @@ its spans beneath the implementation's root span.
 
 | Path | What |
 | --- | --- |
-| [`spring-boot/`](spring-boot/) | Spring Boot 4 one-shot launcher |
+| [`implementations/spring-boot/`](implementations/spring-boot/) | Spring Boot 4 one-shot launcher |
 
 Usage — bringing up the backend and running the launcher — is in each implementation's README.
 

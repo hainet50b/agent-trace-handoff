@@ -36,7 +36,7 @@ public enum Agent {
         Map<String, String> env(TraceHandoff handoff) {
             return Map.of(
                     "OTEL_RESOURCE_ATTRIBUTES", "caller.name=" + handoff.callerName(),
-                    "CODEX_HOME", Path.of("../.codex").toAbsolutePath().normalize().toString()
+                    "CODEX_HOME", Path.of("../../.codex").toAbsolutePath().normalize().toString()
             );
         }
     };

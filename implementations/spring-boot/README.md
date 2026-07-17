@@ -34,7 +34,7 @@ sequenceDiagram
 git clone https://github.com/hainet50b/agent-trace-handoff.git
 cd agent-trace-handoff
 docker compose up -d
-cd spring-boot
+cd implementations/spring-boot
 ./mvnw spring-boot:run -D"spring-boot.run.arguments=--handoff.agent=claude"
 ```
 
@@ -54,7 +54,7 @@ service and its latest transaction — the trace view shows the implementation's
 agent's spans beneath it. Discover finds the agent's signals by the printed `trace.id` /
 `labels.caller_name`.
 
-![APM trace waterfall](../docs/spring-boot/apm-trace-waterfall.png)
+![APM trace waterfall](../../docs/spring-boot/apm-trace-waterfall.png)
 
 The implementation's root span and the agent's spans under one trace:
 
@@ -155,7 +155,7 @@ CODEX {
     Map<String, String> env(TraceHandoff handoff) {
         return Map.of(
                 "OTEL_RESOURCE_ATTRIBUTES", "caller.name=" + handoff.callerName(),
-                "CODEX_HOME", Path.of("../.codex").toAbsolutePath().normalize().toString()
+                "CODEX_HOME", Path.of("../../.codex").toAbsolutePath().normalize().toString()
         );
     }
 }
