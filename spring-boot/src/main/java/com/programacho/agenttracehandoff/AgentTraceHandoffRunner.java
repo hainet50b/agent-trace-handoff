@@ -55,6 +55,9 @@ public class AgentTraceHandoffRunner implements CommandLineRunner {
             process.getOutputStream().close();
             String response = new String(process.getInputStream().readAllBytes(), StandardCharsets.UTF_8).strip();
             int exitCode = process.waitFor();
+            if (exitCode != 0) {
+                throw new IllegalStateException(agent.name().toLowerCase() + " exited with code " + exitCode);
+            }
 
             log.info("{} responded: \"{}\"", agent.name().toLowerCase(), response);
             log.info("{} exited with code {} — its telemetry flushes on exit and joins trace.id={}", agent.name().toLowerCase(), exitCode, span.context().traceId());
