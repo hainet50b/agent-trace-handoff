@@ -28,8 +28,9 @@ public enum Agent {
         List<String> argv(String prompt) {
             if (System.getProperty("os.name").startsWith("Windows")) {
                 return List.of("cmd", "/c", "codex", "exec", prompt);
+            } else {
+                return List.of("codex", "exec", prompt);
             }
-            return List.of("codex", "exec", prompt);
         }
 
         @Override
